@@ -3,6 +3,20 @@
 
 @custom-variant dark (&:is(.dark *));
 
+body{
+    font-family: var(--font-roboto), sans-serif;
+}
+.navLink{
+    @apply relative font-bold text-[20px] ;
+}
+.navLink::after{
+    content: "";
+    @apply absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-900 transition-all duration-300 ;
+}
+.navLink:hover::after{
+    @apply w-full ;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
