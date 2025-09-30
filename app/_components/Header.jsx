@@ -9,7 +9,7 @@ function Header() {
             <Link className='font-bold text-[20px]' href="">Destination</Link>
             <Link className='font-bold text-[20px]' href="">Services</Link>
             <Link className='font-bold text-[20px]' href="">Booking</Link>
-            <Link className='font-bold text-[20px]' href="">Testimonial</Link>
+            <Link  className='navLink' href="">Testimonial</Link>
         </div>
     </div>
   )
