@@ -3,7 +3,7 @@ import React from 'react'
 
 function Header() {
   return (
-    <div className='flex items-center justify-between p-3 '>
+    <div className='flex items-center justify-between py-[2rem] '>
         <h1 className='text-emerald-900 font-bold text-5xl'>AIR<span className='font-bold text-sm text-yellow-900'>Travel</span></h1>
         <div className='flex items-center gap-3 mr-6'>
             <Link className='navLink' href="">Destination</Link>
