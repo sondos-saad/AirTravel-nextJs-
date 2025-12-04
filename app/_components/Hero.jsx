@@ -5,7 +5,7 @@ import React from 'react'
 function Hero() {
   return (
     <section className='md:flex items-center justify-between py-10'>
-      <div className='md:w-[50%] flex flex-col items-center md:items-start'>
+      <div className='px-4 md:w-[50%] flex flex-col items-center md:items-start'>
         <h2 className='text-emerald-900 text-[20px] lg:text-[35px] font-bold  mb-2'>Best Destinations around the world</h2>
         <p className='text-[40px] lg:text-[70px] font-bold lg:leading-20 '>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
         <p className='mt-5 text-md'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo minus voluptate odio recusandae. Laborum totam aperiam debitis aspernatur, possimus adipisci dolorem modi optio quibusdam dicta vero atque ipsa vitae nemo?</p>

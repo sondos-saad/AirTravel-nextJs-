@@ -7,6 +7,7 @@ function Header() {
     const [isOpen, setIsOpen]= useState(false);
 
   return (
+    <>
     <div className='flex items-center justify-between py-[2rem] px-4 sm:px-6 lg:px-8 mx-auto shadow-md '>
         <h1 className='text-emerald-900 font-bold text-5xl'>AIR<span className='font-bold text-sm text-yellow-900'>Travel</span></h1>
         <div className='sm:hidden'>
@@ -14,13 +15,26 @@ function Header() {
                 {isOpen ? "X": "="}
             </button>
         </div>
-        <div className='flex items-center gap-3 mr-6'>
+        <div className='hidden sm:flex items-center gap-3 mr-6'>
             <Link className='navLink' href="">Destination</Link>
             <Link className='navLink' href="">Services</Link>
             <Link className='navLink' href="">Booking</Link>
             <Link  className='navLink' href="">Testimonial</Link>
         </div>
     </div>
+        {
+            isOpen && (
+        <div className='sm:hidden  bg-emerald-900 text-white  p-[1rem]'>
+            <div className=' flex flex-col items-center  '>
+            <Link className='navLink mb-2' href="">Destination</Link>
+            <Link className='navLink mb-2' href="">Services</Link>
+            <Link className='navLink mb-2' href="">Booking</Link>
+            <Link  className='navLink mb-2' href="">Testimonial</Link>
+        </div>
+        </div>
+            )
+        }
+    </>
   )
 }
 
