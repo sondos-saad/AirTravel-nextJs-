@@ -1,9 +1,12 @@
 "use client"
+import { Button } from '@/components/ui/button';
+import { SignInButton, SignUpButton, UserButton, useUser } from '@clerk/nextjs';
 import Link from 'next/link'
 import React, { useState } from 'react'
 
 function Header() {
 
+    const {user} = useUser();
     const [isOpen, setIsOpen]= useState(false);
 
   return (
@@ -21,6 +24,21 @@ function Header() {
             <Link className='navLink' href="">Booking</Link>
             <Link  className='navLink' href="">Testimonial</Link>
         </div>
+
+        {!user ? (
+            <>
+                <SignInButton >
+                    <Button>SignIn</Button>
+                </SignInButton>
+                <SignUpButton>
+                    <Button>SignUp</Button>
+                </SignUpButton>
+            </>
+        ): (
+            <>
+                <UserButton afterSignOutUrl='/'/>
+            </>
+        )}
     </div>
         {
             isOpen && (
