@@ -11,7 +11,7 @@ function Header() {
 
   return (
     <>
-    <div className='flex items-center justify-between py-[2rem] px-4 sm:px-6 lg:px-8 mx-auto shadow-md '>
+    <div className='flex items-center justify-between py-[2rem] px-4 md:px-2 lg:px-8 mx-auto shadow-md '>
         <h1 className='text-emerald-900 font-bold text-5xl'>AIR<span className='font-bold text-sm text-yellow-900'>Travel</span></h1>
         <div className='sm:hidden'>
             <button onClick={()=> setIsOpen(!isOpen)} className='text-gray-800 text-2xl focus:outline-none'>
@@ -23,9 +23,7 @@ function Header() {
             <Link className='navLink' href="">Services</Link>
             <Link className='navLink' href="">Booking</Link>
             <Link  className='navLink' href="">Testimonial</Link>
-        </div>
-
-        {!user ? (
+             {!user ? (
             <>
                 <SignInButton >
                     <Button>SignIn</Button>
@@ -39,6 +37,9 @@ function Header() {
                 <UserButton afterSignOutUrl='/'/>
             </>
         )}
+        </div>
+
+       
     </div>
         {
             isOpen && (
@@ -48,6 +49,20 @@ function Header() {
             <Link className='navLink mb-2' href="">Services</Link>
             <Link className='navLink mb-2' href="">Booking</Link>
             <Link  className='navLink mb-2' href="">Testimonial</Link>
+             {!user ? (
+            <>
+                <SignInButton >
+                    <Button className='mb-2'>SignIn</Button>
+                </SignInButton>
+                <SignUpButton>
+                    <Button>SignUp</Button>
+                </SignUpButton>
+            </>
+        ): (
+            <>
+                <UserButton afterSignOutUrl='/'/>
+            </>
+        )}
         </div>
         </div>
             )
