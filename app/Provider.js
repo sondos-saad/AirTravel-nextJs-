@@ -15,7 +15,8 @@ function Provider({children}) {
     const createNewUser = async()=>{
         const result = await axios.post("/api/user", {
             name:user?.fullName,
-            email:user?.primaryEmailAddress?.emailAddress
+            email:user?.primaryEmailAddress?.emailAddress,
+            userId:user?.id,
         })
         console.log(result.data)
     }

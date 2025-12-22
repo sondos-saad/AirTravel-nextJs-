@@ -4,7 +4,7 @@ import { eq } from "drizzle-orm"
 import { NextResponse } from "next/server"
 
 export async function POST(req){
-    const {email, name} = await req.json()
+    const {email, name, userId} = await req.json()
 
 
 
@@ -16,7 +16,9 @@ export async function POST(req){
     if(user.length == 0){
         const result = await db.insert(usersTable).values({
             name : name,
-            email: email
+            email: email,
+            userId,
+            role:'user'
         }).returning(usersTable)
         console.log(result)
 
