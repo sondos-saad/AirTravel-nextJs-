@@ -2,12 +2,46 @@
 import { Button } from '@/components/ui/button';
 import { SignInButton, SignUpButton, UserButton, useUser } from '@clerk/nextjs';
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Header() {
 
     const {user} = useUser();
     const [isOpen, setIsOpen]= useState(false);
+    const [useRole, setUseRole] = useState(null);
+
+    useEffect(()=>{
+        const syncUser = async()=>{
+            if(user?.id && user?.primaryEmailAddress?.emailAddress){
+                try{
+                    const response = await fetch('/api/user', {
+                        method:'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+
+                        body: JSON.stringify({
+                            userId:user.id,
+                            email: user.emailAddresses[0].emailAddress,
+                            name: user.fullName || user.firstName || "user",
+                        }),
+                    })
+                    if(response.ok){
+                        const userData = await response.json()
+                        setUseRole(userData.role)
+                    }
+                }catch(error){
+                    console.log('Error syncing user:' , error)
+                }
+            }else{
+                setUseRole(null)
+            }
+        }
+        syncUser()
+    },[user])
+
+    const isAdmin = useRole === 'admin'
+    const isUser = useRole === 'user'
 
   return (
     <>
@@ -21,7 +55,16 @@ function Header() {
         <div className='hidden sm:flex items-center gap-3 mr-6'>
             <Link className='navLink' href="">Destination</Link>
             <Link className='navLink' href="">Services</Link>
-            <Link className='navLink' href="">Booking</Link>
+            {
+                isUser && (
+                    <Link className='navLink' href="">My Booking</Link>
+                )
+            }
+            {
+                isAdmin && (
+                    <Link className='navLink' href="">Add Destination </Link>
+                )
+            }
             <Link  className='navLink' href="">Testimonial</Link>
              {!user ? (
             <>
