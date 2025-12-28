@@ -34,7 +34,7 @@ function Header() {
                     console.log('Error syncing user:' , error)
                 }
             }else{
-                setUseRole(null1)
+                setUseRole(null)
             }
         }
         syncUser()
