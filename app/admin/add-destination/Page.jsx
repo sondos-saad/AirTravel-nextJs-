@@ -1,5 +1,6 @@
 'use client'
 
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import React, { useState } from 'react'
@@ -53,6 +54,28 @@ function Page() {
                         <Input name='Duration' placeholder='Duration (e.g., 5 days)' value={formData.duration}/>
                     </div>
                 )}
+
+                  {step === 4 && (
+                    <div className='space-y-4'>
+                        <label className='block font-medium'>Upload Image</label>
+                        <Input name='image' accept="image/*" type="file"/>
+                    </div>
+                )}
+
+                {/* buttons */}
+                <div className='flex justify-between'>
+
+                    {step > 1 && (
+                        <Button>Back</Button>
+                    )}
+
+                    {step < 4 && (
+                        <Button>Next</Button>
+                    )}
+                    
+
+
+                </div>
 
             </form>
         </div>
