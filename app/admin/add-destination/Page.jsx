@@ -23,8 +23,59 @@ function Page() {
     })
 
     const handleChange =(e)=>{
-        setFormData({...formData, [e.target.name]:e.target.value})
+        const {name , value , files} = e.target
+        if(files){
+            setFormData((prev=> ({...prev , [name]: files[0]})))
+        }else{
+            setFormData((prev=> ({...prev , [name]: value})))
+        }
         
+    }
+
+    const handelSubmit = async (e) =>{
+        e.preventDefault()
+
+    try {
+        const data = new FormData()
+        Object.keys(formData).forEach((key)=>{
+            data.append(key, formData[key])
+        })
+
+        const res = await fetch("/api/destinations" , {
+            method: "POST",
+            body: data       
+         })
+
+         if(res.ok){
+            toast.success("Destination added successfully")
+            setFormData({
+                name: "",
+                country: "",
+                city: "",
+                description: "",
+                highlights: "",
+                bestSeason: "",   
+                activities: "",                        
+                price:"",                                 
+                duration: "",          
+                imageUrl: null,
+            })
+            setStep(1)
+         }else{
+            toast.error("Something went wrong ")
+         }
+
+    }catch (error){
+        console.error(error)
+        toast.error("Server error")
+    }
+    }
+
+    const nextStep = ()=>{
+        setStep((prev)=> prev + 1)
+    }
+    const prevStep = ()=>{
+        setStep((prev)=> prev - 1)
     }
 
   return (
@@ -34,7 +85,7 @@ function Page() {
         {/* form section */}
         <div className='p-6'>
             <h2 className='text-[#f78547] text-[20px] my-4'>Add Destination</h2>
-            <form className='space-y-6'>
+            <form onSubmit={handelSubmit} className='space-y-6'>
 
                 {step === 1 && (
                     <div className='space-y-4'>
@@ -71,11 +122,15 @@ function Page() {
                 <div className='flex justify-between'>
 
                     {step > 1 && (
-                        <Button>Back</Button>
+                        <Button type="button" onClick={prevStep}>Back</Button>
                     )}
 
                     {step < 4 && (
-                        <Button>Next</Button>
+                        <Button type="button" onClick={nextStep}>Next</Button>
+                    )}
+
+                    {step === 4 && (
+                        <Button type="submit">Submit</Button>
                     )}
                     
                 </div>
