@@ -6,6 +6,17 @@ export async function POST(req) {
     try{
         const formData = await req.formData()
 
+        let imageData = null;
+        const imageFile = formData.get("imageUrl");
+
+        if(imageFile && imageFile.size > 0 ){
+            // convert to base64
+            const bytes = await imageFile.arrayBuffer();
+            const buffer = Buffer.from(bytes);
+            const base64 = buffer.toString("base64");
+            imageData = `data:${imageFile.type};base64, ${base64}`;
+        }
+
         const newDestination = {
             name: formData.get("name"),
             country: formData.get("country"),
@@ -16,7 +27,7 @@ export async function POST(req) {
             activities: formData.get("activities"),
             price: parseFloat(formData.get("price")),
             duration: formData.get("duration"),
-            image: formData.get("image") || null,
+            imageUrl: imageData || null,
         }
         console.log("Incoming destination:", newDestination);
 
@@ -29,4 +40,17 @@ export async function POST(req) {
         console.error("Error adding destination:", error);
         return NextResponse.json({success:false, error:error.message}, {status:500});
     }
+}
+
+
+export async function GET(req) {
+    try{
+        const destination = await db.select().from(destinations)
+
+        return NextResponse.json({success:true, data:destination})
+    }catch (error){
+        console.error("Error fetching destination:", error);
+        return NextResponse.json({success:false, error:error.message}, {status:500});
+    }
+
 }

@@ -114,7 +114,7 @@ function Page() {
                   {step === 4 && (
                     <div className='space-y-4'>
                         <label className='block font-medium'>Upload Image</label>
-                        <Input name='image' accept="image/*" type="file" onChange={handleChange}/>
+                        <Input name='imageUrl' accept="image/*" type="file" onChange={handleChange}/>
                     </div>
                 )}
 
