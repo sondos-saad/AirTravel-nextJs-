@@ -1,5 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
+import { Button } from '@/components/ui/button'
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 function Destination() {
 
@@ -43,7 +46,14 @@ function Destination() {
                       )
                    })
                }
+               
              </div>
+             <div className='text-right mt-[1rem]'>
+                <Link>
+                    <Button>See All <ArrowRight></ArrowRight></Button>
+                </Link>
+                
+               </div>
     </div>
   )
 }
