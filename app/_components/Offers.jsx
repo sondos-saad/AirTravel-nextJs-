@@ -37,7 +37,7 @@ function Offers() {
         {
             category.map((cat)=>{
                return(
-                 <div className='flex flex-col items-center text-center p-4 rounded-lg hover:shadow-lg transition duration-300 hover:bg-emerald-900 group cursor-pointer'>
+                 <div key={cat.id} className='flex flex-col items-center text-center p-4 rounded-lg hover:shadow-lg transition duration-300 hover:bg-emerald-900 group cursor-pointer'>
                     <Image src={cat.icon} width={60} height={60}/>
                     <h3 className='mt-4 font-semibold text-lg text-gray-800 group-hover:text-white'>{cat.title}</h3>
                     <p className='mt-2 text-gray-500 text-sm group-hover:text-gray-200'>{cat.desc}</p>
