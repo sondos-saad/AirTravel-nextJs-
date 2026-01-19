@@ -1,6 +1,8 @@
 "use client"
-import { MapPin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {  MapPin, Plane } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 
 function destinationsList() {
@@ -48,6 +50,18 @@ function destinationsList() {
                                 <MapPin className='text-[17px]'/>
                                 <span className='ml-2'>{des?.country} , {des?.city}</span>
                             </div>
+                            <p className='text-green-700 mb-4 text-sm loading-relaxed truncate'>{des?.description}</p>
+                            <div className='flex justify-between items-center mb-4 p-3 bg-gray-500 rounded-lg'>
+                                <div className='text-center'>
+                                    <strong className='text-2xl font-bold text-[#f78547]'>  {des?.price} $</strong>
+                                </div>
+                                <div className='text-center '>
+                                    <strong className='text-2xl font-bold text-[#f78547] flex items-center'> <Plane className='mr-2'/> {des?.duration} Trip</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='p-6 rounded-3xl'>
+                            <Link href={`/destinationsList/${des?.id}`}><Button className='w-full '>Book Now</Button></Link>
                         </div>
                         
                     </div>
