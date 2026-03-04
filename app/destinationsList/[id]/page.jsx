@@ -1,4 +1,5 @@
 "use client"
+import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
@@ -48,8 +49,17 @@ function page() {
 
     
   return (
-    <div>
+    <div className='min-h-screen bg-gradient-to-br from-blue-50 to-orange-50'>
+        <div className='max-w-7xl mx-auto p-x5 py-5'>
+
+            {/* hero section */}
+            <div className='relative h-96 md:h-[500px] rounded-2xl overflow-hidden mb-8 shadow-2xl'>
+                {destinations.imageUrl && (
+                    <Image width={300} height={300} src={destinations.imageUrl} className='w-full h-full object-cover'/>
+                )}
+            </div>
       
+        </div>
     </div>
   )
 }
