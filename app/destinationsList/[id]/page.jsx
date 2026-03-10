@@ -1,4 +1,5 @@
 "use client"
+import { MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
@@ -57,6 +58,16 @@ function page() {
                 {destinations.imageUrl && (
                     <Image width={300} height={300} src={destinations.imageUrl} className='w-full h-full object-cover'/>
                 )}
+                <div className='absolute inset-0 g-gradient-to-t from-black/60 via-transparent to-transparent'></div>
+                <div className='absolute bottom-0 right-0 left-0 p-8 text-white'>
+                    <h1 className='font-bold text-[30px]'>
+                        {destinations?.name}
+                    </h1>
+                    <div className='flex items-center text-xl md:text-2xl'>
+                        <MapPin className='w-6 h-6 mr-2'/>
+                        <span>{destinations?.country}, {destinations?.city}</span>
+                    </div>
+                </div>
             </div>
       
         </div>
