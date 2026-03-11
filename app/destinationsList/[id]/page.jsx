@@ -69,6 +69,25 @@ function page() {
                     </div>
                 </div>
             </div>
+
+            <div>
+                {/* main content */}
+                <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
+                    <div className='lg:col-span-2 space-y-8'>
+                        {/* description */}
+                        <div className='bg-white rounded-xl p-8 shadow-lg'>
+                            <h2 className='text-3xl font-bold text-gray-800 mb-6'>
+                                About This Destination
+                            </h2>
+                            <p className='text-gray-700 text-lg leading-relaxed'>{destinations.description}</p>
+                        </div>
+                        {/* highlights */}
+                        <div className='bg-white rounded-xl p-8 shadow-lg'>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
       
         </div>
     </div>
