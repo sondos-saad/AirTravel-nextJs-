@@ -1,5 +1,5 @@
 "use client"
-import { MapPin } from 'lucide-react';
+import { MapPin, Star } from 'lucide-react';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
@@ -83,8 +83,21 @@ function page() {
                         </div>
                         {/* highlights */}
                         <div className='bg-white rounded-xl p-8 shadow-lg'>
-                            
+                            <div className='flex items-center mb-6'>
+                                <Star className='w-8 h-8 text-[#f78547]'/>
+                                <h2>Highlights</h2>
+                            </div>
+                            <div className='text-gray-700 text-lg leading-relaxed'>
+                                {destinations?.highlights?.split(",").map((highlight)=>(
+                                    <div className='flex items-start mb-3'>
+                                        <span className='text-[#f78547] mr-3 mt-1'>-</span>
+                                        <span >{highlight.trim()}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
+                        {/* activities */}
+                        
                     </div>
                 </div>
             </div>
