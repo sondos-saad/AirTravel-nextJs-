@@ -111,7 +111,21 @@ function page() {
                             </div>
                         </div>
                     </div>
+                        {/* booking sidebar */}
+                    <div className='lg:col-span-1'>
+                        <div className='bg-white rounded-xl p-8 shadow-lg sticky top-24'>
+                            <div className='text-center mb-8'>
+                                <strong className='mb-2 font-bold text-[#f78547]'>
+                                    {destinations?.price} $ Per Person
+                                </strong>
+                            </div>
+                            {/* trip details */}
+                            
+                        </div>
+                    </div>
                 </div>
+
+            
             </div>
       
         </div>
