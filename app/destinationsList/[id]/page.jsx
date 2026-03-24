@@ -1,5 +1,6 @@
 "use client"
-import { Activity, MapPin, Star } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Activity, Calendar, Clock, MapPin, MapPinCheck, Star } from 'lucide-react';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
@@ -120,7 +121,36 @@ function page() {
                                 </strong>
                             </div>
                             {/* trip details */}
-                            
+                            <div className='space-y-4 mb-8'>
+                                <div className='flex items-center p-4 bg-gray-50 rounded-lg'>
+                                    <Clock className='w-6 h-6 text-[#f78547] mr-4'/>
+                                    <div>
+                                        <p className='text-[#f78547]'>Duration</p>
+                                        <p className='text-gray-600'>{destinations?.duration}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className='space-y-4 mb-8'>
+                                <div className='flex items-center p-4 bg-gray-50 rounded-lg'>
+                                    <Calendar className='w-6 h-6 text-[#f78547] mr-4'/>
+                                    <div>
+                                        <p className='text-[#f78547]'>Best Season</p>
+                                        <p className='text-gray-600'>{destinations?.bestSeason}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className='space-y-4 mb-8'>
+                                <div className='flex items-center p-4 bg-gray-50 rounded-lg'>
+                                    <MapPinCheck className='w-6 h-6 text-[#f78547] mr-4'/>
+                                    <div>
+                                        <p className='text-[#f78547]'>Location</p>
+                                        <p className='text-gray-600'>{destinations?.country} , {destinations?.city}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <Button className='w-full'>Book Now</Button>
                         </div>
                     </div>
                 </div>
