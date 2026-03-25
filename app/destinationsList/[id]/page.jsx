@@ -3,15 +3,15 @@ import { Button } from '@/components/ui/button';
 import { Activity, Calendar, Clock, MapPin, MapPinCheck, Star } from 'lucide-react';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 
 function page() {
         const [destinations, setDestinations] = useState(null);
         const [loading, setLoading] = useState(true);
         const [error, setError] = useState(null)
-        
-
-        const params = useParams()
+        const params = useParams();
+        const router = useRouter();
 
         useEffect(()=>{
             if(params.id){
@@ -49,7 +49,9 @@ function page() {
                 )
             }
 
-    
+    const handelBookNow=()=>{
+        router.push(`/checkout?destinationId=${destinations.id}&name=${encodeURIComponent(destinations.name)}&price=${destinations.price}`)
+    }
   return (
     <div className='min-h-screen bg-gradient-to-br from-blue-50 to-orange-50'>
         <div className='max-w-7xl mx-auto p-x5 py-5'>
@@ -150,7 +152,7 @@ function page() {
                                     </div>
                                 </div>
                             </div>
-                            <Button className='w-full'>Book Now</Button>
+                            <Button onClick={handelBookNow} className='w-full'>Book Now</Button>
                         </div>
                     </div>
                 </div>
