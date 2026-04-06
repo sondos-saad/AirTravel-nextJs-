@@ -90,7 +90,7 @@ function Header() {
             <div className=' flex flex-col items-center  '>
             <Link className='navLink mb-2' href="">Destination</Link>
             <Link className='navLink mb-2' href="">Services</Link>
-            <Link className='navLink mb-2' href="">Booking</Link>
+            <Link className='navLink mb-2' href="/bookings">Booking</Link>
             <Link  className='navLink mb-2' href="">Testimonial</Link>
              {!user ? (
             <>
