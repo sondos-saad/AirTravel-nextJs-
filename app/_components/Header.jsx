@@ -54,7 +54,7 @@ function Header() {
         </div>
         <div className='hidden sm:flex items-center gap-3 mr-6'>
             <Link className='navLink' href="">Destination</Link>
-            <Link className='navLink' href="">Services</Link>
+            <Link className='navLink' href="ai">Ask AI</Link>
             {
                 isUser && (
                     <Link className='navLink' href="">My Booking</Link>
@@ -89,7 +89,7 @@ function Header() {
         <div className='sm:hidden  bg-emerald-900 text-white  p-[1rem]'>
             <div className=' flex flex-col items-center  '>
             <Link className='navLink mb-2' href="">Destination</Link>
-            <Link className='navLink mb-2' href="">Services</Link>
+            <Link className='navLink mb-2' href="">Ask AI</Link>
             <Link className='navLink mb-2' href="/bookings">Booking</Link>
             <Link  className='navLink mb-2' href="">Testimonial</Link>
              {!user ? (

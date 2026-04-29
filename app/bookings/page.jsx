@@ -148,7 +148,7 @@ function page() {
       {/* summary stats */}
 
       {booking.length > 0 && (
-        <div className='mt-12 grid-cols-1 md:grid-cols-4 gap-6'>
+        <div className='mt-12 grid-cols-1 md:grid-cols-3 gap-6'>
             <div className='bg-white rounded-xl p-6 shadow-lg text-center'>
                 <div className='text-3xl font-bold text-[#f78547] mb-2'>
                     {booking.length}
@@ -157,9 +157,16 @@ function page() {
             </div>
             <div className='bg-white rounded-xl p-6 shadow-lg text-center'>
                 <div className='text-3xl font-bold text-[#f78547] mb-2'>
-                    {booking.travelers}
+                    {booking.reduce((sum , booking) => sum + booking.travelers , 0)}
                 </div>
                 <h1 className='text-[#f78547] text-xl '>Total Travelers</h1>
+            </div>
+
+             <div className='bg-white rounded-xl p-6 shadow-lg text-center'>
+                <div className='text-3xl font-bold text-[#f78547] mb-2'>
+                    {Math.round(booking.reduce((sum , booking) => sum + booking.price , 0)/ booking.length) || 0} $
+                </div>
+                <h1 className='text-[#f78547] text-xl '>Booking Value</h1>
             </div>
         </div>
       )}
